@@ -9,7 +9,9 @@ application.use(express.urlencoded({
 }));
 
 // Import Routes
-const usersRoute = require('./routes/users');
+//const usersRoute = require('./routes/users');
+
+
 application.get("/users", async (req, res) => {
     try {
         const users = await UsersModel.find((err, docs) => {
