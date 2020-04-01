@@ -10,7 +10,7 @@ const PlacementSchema = new mongoose.Schema({
         cgpa: { type: String, required: "Required" },
         backlogs: { type: Boolean, required: "Required" },
         branch: { type: [String], required: "Required" }
-    }
-    //branch should be array
+    },
+    date: { type: Date }
 });
 module.exports = mongoose.model("placements", PlacementSchema);

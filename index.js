@@ -30,6 +30,9 @@ application.use("/users", usersRoutes)
 const placementRoutes = require('./routes/placementRoutes');
 application.use("/placements", placementRoutes);
 
+const eventRoutes = require('./routes/eventRoutes');
+application.use("/events", eventRoutes);
+
 // Starting Server to listen 
 const port = 3000;
 application.listen(port, () => {

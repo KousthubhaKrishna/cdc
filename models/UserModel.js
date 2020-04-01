@@ -68,6 +68,9 @@ const UserSchema = new mongoose.Schema({
     mains_rank: { type: String, required: "Required" },
     school_name: { type: String, required: "Required" },
     school_percentage: { type: String, required: "Required" },
+    date: { type: Date }
+    // Photo Upload
+    // Resume Upload
 });
 
 module.exports = mongoose.model("users", UserSchema);
