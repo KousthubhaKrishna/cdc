@@ -1,38 +1,37 @@
 // Required Imports 
-const connection = require('./models');
+require("./models/conn");
 const express = require('express');
-const application = express();
-const UsersModel = require('./models/User')
 
+
+// Initialise application 
+const application = express();
 application.use(express.urlencoded({
     extended: true
 }));
-
-// Import Routes
-//const usersRoute = require('./routes/users');
-
-
-application.get("/users", async (req, res) => {
-    try {
-        const users = await UsersModel.find((err, docs) => {
-            console.log("Here");
-        })
-        res.send("HI");
-    }
-    catch (err) {
-        console.log(err);
-    }
+application.use(express.json());
+application.use((err, req, res, next) => {
+    if (err instanceof SyntaxError) return res.status(400).send(JSON.stringify({
+        error: "Invalid JSON"
+    }))
+    console.error(err);
+    res.status(500).send();
 });
+
 // Routes
 application.get('/', (req, res) => {
     res.send("<h1> Home Sweet Home </h1>");
 });
 
-application.get('/users');
 
+// Import Routes
+const usersRoutes = require('./routes/usersRoutes');
+application.use("/users", usersRoutes)
+
+const placementRoutes = require('./routes/placementRoutes');
+application.use("/placements", placementRoutes);
 
 // Starting Server to listen 
-const port = process.env.PORT || 3000;
+const port = 3000;
 application.listen(port, () => {
-    console.log('Server Started .. AT ' + port);
+    console.log('Server started at port: ' + port);
 });
