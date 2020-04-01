@@ -34,7 +34,7 @@ const eventRoutes = require('./routes/eventRoutes');
 application.use("/events", eventRoutes);
 
 // Starting Server to listen 
-const port = 3000;
+const port = process.env.PORT || 3157;
 application.listen(port, () => {
     console.log('Server started at port: ' + port);
 });
