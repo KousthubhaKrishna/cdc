@@ -60,14 +60,23 @@ const UserSchema = new mongoose.Schema({
     },
     branch: { type: String, required: "Required" },
     section: { type: String, required: "Required" },
+
+    //  Education
     cgpa: { type: String, required: "Required" },
-    backlogs: { type: String, required: "Required" },
+    backlogs: { type: Boolean, required: "Required" },
     high_school_name: { type: String, required: "Required" },
     high_school_percentage: { type: String, required: "Required" },
     emcet_rank: { type: String, required: "Required" },
     mains_rank: { type: String, required: "Required" },
     school_name: { type: String, required: "Required" },
     school_percentage: { type: String, required: "Required" },
+
+    // Personal Deatils
+    father_name: { type: String },
+    address: { type: String, required: "Required" },
+    city: { type: String, required: "Required" },
+    state: { type: String, required: "Required" },
+    zip_code: { type: String, required: "Required" },
     date: { type: Date }
     // Photo Upload
     // Resume Upload

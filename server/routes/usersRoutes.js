@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const UserModel = require('../models/UserModel')
 
+
 // GET
 router.get("/", async (req, res) => {
     console.log("Querying Users Data");
@@ -33,12 +34,13 @@ router.post("/", async (req, res) => {
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);
     } catch (err) {
-
         // Error : User Already Exists
         message = err.message
-        if (err.code == 11000)
-            message = "User Already Exists !"
-        res.status(400).json({ message: message });
+        if (err.code == 11000) {
+            message = "User Already Exists !";
+            res.status(400).send(message);
+        }
+        res.json({ message: message });
     }
 });
 
